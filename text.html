@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Love Letter</title>
+  <style>
+    /* Reset & Basic Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container with an animated glowing border */
+    .letter-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border: 5px solid;
+      border-image: linear-gradient(45deg, #ff0066, #ffcc00, #33cc33, #00ccff, #ff0066) 1;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
+      max-width: 900px;
+      position: relative;
+      animation: borderGlow 5s linear infinite;
+    }
+    @keyframes borderGlow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* Left Image Section */
+    .image-container {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: hidden;
+      margin: 10px;
+      position: relative;
+    }
+    .image-container img {
+      max-width: 250px;
+      opacity: 0;
+      animation: slideUp 2s ease-out forwards;
+    }
+    @keyframes slideUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Right Text Section with Animated Glowing Background */
+    .text-container {
+      flex: 2 1 400px;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .text-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255,0,102,0.3), rgba(255,204,0,0.3), rgba(51,204,51,0.3), rgba(0,204,255,0.3));
+      animation: backgroundGlow 5s linear infinite;
+      z-index: -1;
+    }
+    @keyframes backgroundGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .text-container p {
+      position: relative;
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #fff;
+      text-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 30px #ff0066;
+    }
+
+    /* Floating Heart Kiss Animation from Bottom */
+    .heart-animation {
+      position: absolute;
+      bottom: -50px;
+      right: 20px;
+      width: 50px;
+      opacity: 0;
+      animation: heartRise 3s ease-out infinite;
+    }
+    @keyframes heartRise {
+      0% {
+        transform: translateY(50px) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50px) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+      .letter-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .image-container, .text-container {
+        flex: unset;
+        width: 100%;
+      }
+      .image-container img {
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-container">
+    <!-- Left Side: Animated Image -->
+    <div class="image-container">
+      <img src="vanus.png" alt="Vanus Image">
+    </div>
+
+    <!-- Right Side: Love Letter Text with Animated Background -->
+    <div class="text-container">
+      <p>
+        Happy birthday to my amazing bestie vannu! Wishing you a day filled with joy, laughter, and all the things you love, and hoping this year brings you even more happiness and success! ❤🫶
+      </p>
+    </div>
+
+    <!-- Floating Heart Kiss Animation -->
+    <img src="heartkiss.png" alt="Heart Kiss" class="heart-animation">
+  </div>
+</body>
+</html>
